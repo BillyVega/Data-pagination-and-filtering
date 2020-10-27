@@ -24,7 +24,7 @@ function showPage(list, page) {
    const studentList = document.querySelector('ul');
    studentList.innerHTML = '';
 
-   for (let i = 0; i < list.length; i+=1)
+   for (let i = 0; i < list.length; i+=1) {
       if (i >= startIndex && i < endIndex) {
          let studentItem = 
          `
@@ -41,9 +41,12 @@ function showPage(list, page) {
                `
                studentList.insertAdjacentHTML("beforeend", studentItem);
             }
+
+   }
+     
          
          };
- showPage(data,1);
+
 
 /*
 Create the `addPagination` function
@@ -51,22 +54,37 @@ This function will create and insert/append the elements needed for the paginati
 */
 
 function addPagination(list) {
-  const pageCount = Math.ceil(list.length / 9);
-  const ul = document.querySelector('.link-list');
-  ul.innerHTML = '';
-   for (let i = 1; i < pageCount; i+=1){
+  const numOfPages = Math.ceil(list.length / 7);
+  const linkList = document.querySelector('.link-list');
+  linkList.innerHTML = '';
+   for (let i = 1; i < numOfPages; i+=1){
       
       const button = 
       `<li>
-         <button type="button">${i}</button>
+         <button class="active" type="button">${i}</button>
       </li>`
       
-      ul.insertAdjacentHTML("beforeend",button);
+      linkList.insertAdjacentHTML("beforeend",button);
+     
+      
    }
-
-
-
+   
+   linkList.addEventListener('click', (e) => {
+   let clicked = e.target;
+   if ( clicked.tagName === 'BUTTON' ){
+   let active = document.querySelector('.active')
+   active.className = '';
+   clicked.className = '.active';
+ 
+   
+    showPage(list,clicked.textContent)
+  
 }
+
+
+   })
+}
+showPage(data,1);
 addPagination(data);
 
 
