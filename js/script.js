@@ -18,6 +18,24 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 
+// search bar ---
+function searchBar() {
+   const header = document.querySelector('header')
+   let html = 
+
+   `<label for="search" class="student-search">
+      <input id="search" placeholder="Search by name...">
+      <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+   </label>`;
+ 
+   header.insertAdjacentHTML('beforeend',html);
+}
+searchBar();
+
+
+
+
+
 function showPage(list, page) {
    const startIndex = (page * 9) - 9;
    const endIndex = (page * 9);
@@ -61,31 +79,32 @@ function addPagination(list) {
       
       const button = 
       `<li>
-         <button class="active" type="button">${i}</button>
+         <button type="button">${i}</button>
       </li>`
       
       linkList.insertAdjacentHTML("beforeend",button);
-     
-      
    }
    
    linkList.addEventListener('click', (e) => {
-   let clicked = e.target;
-   if ( clicked.tagName === 'BUTTON' ){
-   let active = document.querySelector('.active')
-   active.className = '';
-   clicked.className = '.active';
- 
+      let clicked = e.target;
+      if ( clicked.tagName === 'BUTTON' ){
+      let active = document.querySelectorAll('.active')
+      for (i = 0; i < active.length; i++){
+         active.className = '';
+         clicked.className = 'active';
    
-    showPage(list,clicked.textContent)
-  
-}
+      }
+       
+       showPage(list,clicked.textContent)
 
-
+   }
    })
 }
+
+
 showPage(data,1);
 addPagination(data);
+
 
 
 
