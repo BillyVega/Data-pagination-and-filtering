@@ -33,9 +33,6 @@ function searchBar() {
 searchBar();
 
 
-
-
-
 function showPage(list, page) {
    const startIndex = (page * 9) - 9;
    const endIndex = (page * 9);
@@ -61,11 +58,8 @@ function showPage(list, page) {
             }
 
    }
-     
-         
-         };
-
-
+       
+};
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
@@ -90,8 +84,9 @@ function addPagination(list) {
       if ( clicked.tagName === 'BUTTON' ){
       let active = document.querySelectorAll('.active')
       for (i = 0; i < active.length; i++){
-         active.className = '';
          clicked.className = 'active';
+         active[i].className = '';
+        
    
       }
        
