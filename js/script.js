@@ -20,7 +20,7 @@ This function will create and insert/append the elements needed to display a "pa
 
 // search bar ---
 function searchBar() {
-   const header = document.querySelector('header')
+   const header = document.querySelector('header');
    let html = 
 
    `<label for="search" class="student-search">
@@ -43,19 +43,19 @@ function showPage(list, page) {
       if (i >= startIndex && i < endIndex) {
          let studentItem = 
          `
-               <li class="student-item cf" >
-               <div class="student-details">
-               <img class="avatar" src="${list[i].picture.medium}" alt="Profile Picture">
-               <h3>${list[i].name.first} ${list[i].name.last}</h3>
-               <span class="email">${list[i].email}</span>
-               </div>
-               <div class="joined-details">
-               <span class="date">${list[i].registered.date}</span>
-               </div>
-               </li>
-               `
-               studentList.insertAdjacentHTML("beforeend", studentItem);
-            }
+      <li class="student-item cf" >
+      <div class="student-details">
+      <img class="avatar" src="${list[i].picture.medium}" alt="Profile Picture">
+      <h3>${list[i].name.first} ${list[i].name.last}</h3>
+      <span class="email">${list[i].email}</span>
+      </div>
+      <div class="joined-details">
+      <span class="date">${list[i].registered.date}</span>
+      </div>
+      </li>
+      `
+      studentList.insertAdjacentHTML("beforeend", studentItem);
+   }
 
    }
        
@@ -79,18 +79,18 @@ function addPagination(list) {
       linkList.insertAdjacentHTML("beforeend",button);
    }
    
-   linkList.addEventListener('click', (e) => {
-      let clicked = e.target;
-      if ( clicked.tagName === 'BUTTON' ){
-      let active = document.querySelectorAll('.active')
-      for (i = 0; i < active.length; i++){
-         clicked.className = 'active';
-         active[i].className = '';
+linkList.addEventListener('click', (e) => {
+   let clicked = e.target;
+   if ( clicked.tagName === 'BUTTON' ){
+   let active = document.querySelectorAll('.active');
+   for (i = 0; i < active.length; i++){
+      clicked.className = 'active';
+      active[i].className = '';
         
    
       }
        
-       showPage(list,clicked.textContent)
+       showPage(list,clicked.textContent);
 
    }
    })
