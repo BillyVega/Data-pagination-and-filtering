@@ -82,13 +82,11 @@ function addPagination(list) {
 linkList.addEventListener('click', (e) => {
    let clicked = e.target;
    if ( clicked.tagName === 'BUTTON' ){
-   let active = document.querySelectorAll('.active');
-   for (i = 0; i < active.length; i++){
+   let active = document.querySelector('.active');
       clicked.className = 'active';
-      active[i].className = '';
+
+      active.className = '';
         
-   
-      }
        
        showPage(list,clicked.textContent);
 
